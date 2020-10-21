@@ -113,7 +113,7 @@ spec:
             {{- end }}
           {{- end }}
           securityContext:
-            {{- if not .Values.image.disableCapabilities }}
+            {{- if not .Values.controller.image.disableCapabilities }}
             capabilities:
                 drop:
                 - ALL
