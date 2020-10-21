@@ -113,11 +113,13 @@ spec:
             {{- end }}
           {{- end }}
           securityContext:
+            {{- if not .Values.image.disableCapabilities }}
             capabilities:
                 drop:
                 - ALL
                 add:
                 - NET_BIND_SERVICE
+            {{- end }}
             runAsUser: {{ .Values.controller.image.runAsUser }}
             allowPrivilegeEscalation: {{ .Values.controller.image.allowPrivilegeEscalation }}
           env:
